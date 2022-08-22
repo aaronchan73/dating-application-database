@@ -7,16 +7,6 @@
         <h1>Dating Application Database</h1>
         <h3>Sam Zhao, Aaron Chan, Alvin Zhou</h3>
         <hr/>
-        <!-- <h2>Reset</h2>
-        <p>If you wish to reset the table press on the reset button. If this is the first time you're running this page, you MUST use reset</p>
-
-        <form method="POST" action="project.php">
-            if you want another page to load after the button is clicked, you have to specify that page in the action parameter
-            <input type="hidden" id="resetTablesRequest" name="resetTablesRequest">
-            <p><input type="submit" value="Reset" name="reset"></p>
-        </form>
-
-        <hr /> -->
 
         <h2>Insert New Profile</h2>
         <form method="POST" action="project.php"> <!--refresh page when submitted-->
@@ -76,20 +66,6 @@
         </form>
 
         <hr/>
-        <!-- <h2>Count the Tuples in DemoTable</h2>
-        <form method="GET" action="project.php"> 
-            <input type="hidden" id="countTupleRequest" name="countTupleRequest">
-            <input type="submit" name="countTuples"></p>
-        </form>
-
-        <hr />
-
-        <h2>Display Tuples</h2>
-        <form method="GET" action="project.php">
-            <input type="hidden" id="printResult" name="printResult">
-            <input type="submit" name="printResult"></p>
-        </form> -->
-
 
         <h2>Aggregation Group By: Count the Number of Profiles for Each Gender </h2>
         <form method="GET" action="project.php"> <!--refresh page when submitted-->
@@ -244,9 +220,6 @@
             $newDob = $_POST['newDob'];
             $checkBox = $_POST['dobCheckbox'];
 
-            // // you need the wrap the old name and new name values with single quotations
-            // // executePlainSQL("UPDATE ProfileCreate_3 SET name='" . $new_name . "' WHERE name='" . $old_name . "'");
-
             if (isset($checkBox)) {
                 $attribute = 'dob';
                 $newValue = $newDob;
@@ -298,6 +271,7 @@
 
         function handleResetRequest() {
             global $db_conn;
+
             // Drop old table
             executePlainSQL("DROP TABLE demoTable");
 
@@ -353,7 +327,7 @@
             echo "<tr><th>ID</th><th>Name</th></tr>";
 
             while ($row = OCI_Fetch_Array($result, OCI_BOTH)) {
-                echo "<tr><td>" . $row[0] . "</td><td>" . $row[1] . "</td></tr>"; //or just use "echo $row[0]"
+                echo "<tr><td>" . $row[0] . "</td><td>" . $row[1] . "</td></tr>"; // or just use "echo $row[0]"
             }
 
             echo "</table>";
